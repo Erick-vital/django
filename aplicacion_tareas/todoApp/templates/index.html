@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>hola mundo</h2>
+
+    <div>
+    {% for i in tareas%}
+        <li>{{i}}
+            <form action="borrar/{{i.id}}/" method="POST" style="display: inline;">{% csrf_token %}
+                <input type="submit" value="borrar">
+            </form>
+        </li>
+    {% endfor %}
+    </div>
+
+    <div>
+        <form id="form" action="" method="POST">
+            <!-- 'crsf' token de seguridad-->
+            {% csrf_token %}
+            {{form_tarea.titulo_tarea}}
+            <input type="submit" name="crear tarea">
+        </form>
+    </div>
+
+    {% load static %}
+    <script src="{%static 'main.js' %}"></script>
+
+</body>
+</html>
